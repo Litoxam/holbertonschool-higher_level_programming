@@ -30,6 +30,7 @@ class CustomObject:
         with open(filename, "rb") as file:
             return pickle.load(file)
 
+
 if __name__ == "__main__":
     # Create an instance of CustomObject
     obj = CustomObject(name="Lito", age=29, is_student=True)
