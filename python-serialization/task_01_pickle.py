@@ -18,8 +18,11 @@ class CustomObject:
 
     def serialize(self, filename):
         """serialization"""
-        with open(filename, "wb") as file:
-            pickle.dump(self, file)
+        try:
+            with open(filename, "wb") as file:
+                pickle.dump(self, file)
+        except:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
@@ -40,4 +43,3 @@ if __name__ == "__main__":
     new_obj = CustomObject.deserialize("object.pkl")
     print("\nDeserialized Object:")
     new_obj.display()
-    
