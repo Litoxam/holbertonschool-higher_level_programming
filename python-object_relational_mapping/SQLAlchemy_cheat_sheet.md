@@ -159,3 +159,128 @@ SQL equivalent:
 SELECT * FROM states
 WHERE name LIKE '%n%';
 ```
+
+## INSERT / ADD OBJECTS
+
+### Create a new object
+
+```python
+new_state = State(name="Louisiana")
+```
+
+### Add the object to the session
+
+```python
+session.add(new_state)
+```
+
+### Save changes to the database
+
+```python
+session.commit()
+```
+
+### Access the id assigned by MySQL
+
+```python
+print(new_state.id)
+```
+
+---
+
+### Add multiple objects
+
+```python
+state1 = State(name="California")
+state2 = State(name="Arizona")
+
+session.add_all([state1, state2])
+session.commit()
+```
+
+---
+
+## UPDATE OBJECTS
+
+### Retrieve an object
+
+```python
+state = session.query(State).filter(State.id == 1).first()
+```
+
+### Modify one or more attributes
+
+```python
+state.name = "New Mexico"
+```
+
+### Save changes
+
+```python
+session.commit()
+```
+
+---
+
+## DELETE OBJECTS
+
+### Retrieve an object
+
+```python
+state = session.query(State).filter(State.name == "Texas").first()
+```
+
+### Delete the object
+
+```python
+session.delete(state)
+```
+
+### Save changes
+
+```python
+session.commit()
+```
+
+---
+
+## COMMON CRUD OPERATIONS
+
+### Create
+
+```python
+new_state = State(name="Louisiana")
+session.add(new_state)
+session.commit()
+```
+
+### Read
+
+```python
+session.query(State).all()
+session.query(State).first()
+session.query(State).filter(State.name == "Texas").first()
+session.query(State).order_by(State.id).all()
+```
+
+### Update
+
+```python
+state = session.query(State).filter(State.id == 1).first()
+state.name = "New Mexico"
+session.commit()
+```
+
+### Delete
+
+```python
+state = session.query(State).filter(State.id == 1).first()
+session.delete(state)
+session.commit()
+```
+
+### Close the session
+
+```python
+session.close()
+```
