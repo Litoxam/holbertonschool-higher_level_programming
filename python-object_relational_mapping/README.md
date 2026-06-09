@@ -33,12 +33,13 @@ At the end of this project, I am expected to be able to explain:
 
 ## Project Structure
 
-| File                            | Description                                         |
+
+| File | Description |
 | ------------------------------- | --------------------------------------------------- |
-| [0-select_states.py](./0-select_states.py)           | Lists all states from the database.                 |
+| [0-select_states.py](./0-select_states.py) | Lists all states from the database. |
 | [1-filter_states.py](./1-filter_states.py) | Lists states starting with `N`. |
 | [2-my_filter_states.py](./2-my_filter_states.py) | Filters states according to user input. |
-| [3-my_safe_filter_states.py](./3-my_safe_filter_states.py) | Prevents SQL injection using parameterized queries.            |
+| [3-my_safe_filter_states.py](./3-my_safe_filter_states.py) | Prevents SQL injection using parameterized queries. |
 | [4-cities_by_state.py](./4-cities_by_state.py) | Lists all cities with their corresponding states. |
 | [5-filter_cities.py](./5-filter_cities.py) | Lists cities belonging to a given state. |
 | [model_state.py](./model_state.py) | Defines the State class using SQLAlchemy. |
@@ -49,6 +50,10 @@ At the end of this project, I am expected to be able to explain:
 | [11-model_state_insert.py](./11-model_state_insert.py) | Inserts a new State object. |
 | [12-model_state_update_id_2.py](./12-model_state_update_id_2.py) | Updates the State object with id `2`. |
 | [13-model_state_delete_a.py](./13-model_state_delete_a.py) | Deletes states containing the letter `a`. |
+| [model_city.py](./model_city.py) | Defines the City class using SQLAlchemy. |
+| [14-model_city_fetch_by_state.py](./14-model_city_fetch_by_state.py) | Lists all cities along with their corresponding states using SQLAlchemy. |
+
+
 
 ## Additional Resources
 
