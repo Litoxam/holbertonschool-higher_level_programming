@@ -63,7 +63,7 @@ ORDER BY id;
 ## Filter rows
 
 ```python
-session.query(State).filter(State.id > 5)
+session.query(State).filter(State.id > 5).all()
 ```
 
 - Add a WHERE condition.
@@ -77,93 +77,85 @@ WHERE id > 5;
 
 ---
 
-## First row
+## Exact match
 
 ```python
-session.query(State).first()
+session.query(State).filter(State.name == "Texas").all()
 ```
 
-- Return the first object.
+- Retrieve rows whose name is exactly "Texas".
 
 SQL equivalent:
 
 ```sql
 SELECT * FROM states
-LIMIT 1;
+WHERE name = 'Texas';
 ```
 
 ---
 
-## Count rows
+## Filter rows with LIKE
 
 ```python
-session.query(State).count()
+session.query(State).filter(State.name.like('%a%')).all()
 ```
 
-- Count the number of rows.
+- Retrieve rows whose name contains the letter `a`.
 
 SQL equivalent:
 
 ```sql
-SELECT COUNT(*) FROM states;
+SELECT * FROM states
+WHERE name LIKE '%a%';
 ```
 
 ---
 
-## Add an object
+## Starts with
 
 ```python
-session.add(obj)
-session.commit()
+session.query(State).filter(State.name.like('N%')).all()
 ```
+
+- Retrieve rows whose name starts with `N`.
 
 SQL equivalent:
 
 ```sql
-INSERT INTO ...
+SELECT * FROM states
+WHERE name LIKE 'N%';
 ```
 
 ---
 
-## Delete an object
+## Ends with
 
 ```python
-session.delete(obj)
-session.commit()
+session.query(State).filter(State.name.like('%a')).all()
 ```
+
+- Retrieve rows whose name ends with `a`.
 
 SQL equivalent:
 
 ```sql
-DELETE FROM ...
+SELECT * FROM states
+WHERE name LIKE '%a';
 ```
 
 ---
 
-## Save changes
+## Contains
 
 ```python
-session.commit()
+session.query(State).filter(State.name.like('%n%')).all()
 ```
 
-- Persist changes to the database.
+- Retrieve rows whose name contains `n`.
 
----
+SQL equivalent:
 
-## Cancel changes
-
-```python
-session.rollback()
+```sql
+SELECT * FROM states
+WHERE name LIKE '%n%';
 ```
-
-- Undo uncommitted changes.
-
----
-
-## Close session
-
-```python
-session.close()
-```
-
-- Release the database connection.
