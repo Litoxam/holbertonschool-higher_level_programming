@@ -50,6 +50,9 @@ At the end of this project, I am expected to be able to explain:
 | [12-model_state_update_id_2.py](./12-model_state_update_id_2.py) | Updates the State object with id `2`. |
 | [13-model_state_delete_a.py](./13-model_state_delete_a.py) | Deletes states containing the letter `a`. |
 
+## Additional Resources
+
+* [SQLAlchemy Cheat Sheet](./SQLAlchemy_cheat_sheet.md) - Personal notes and common SQLAlchemy patterns used throughout the project.
 
 ## Author
 
