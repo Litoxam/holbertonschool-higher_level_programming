@@ -20,10 +20,10 @@ if __name__ == "__main__":
     cursor = connexion.cursor()
 
     # SQL query execution
-    cursor.execute("SELECT cities.id, cities.name, states.name FROM states"
-                   "INNER JOIN cities"
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM states "
+                   "INNER JOIN cities "
                    "ON cities.state_id = states.id "
-                   "ORDER BY cities.id ASC")
+                   "ORDER BY cities.id ASC;")
 
     # get the result
     rows = cursor.fetchall()

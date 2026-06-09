@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all cities from the database hbtn_0e_4_usa
+A script that takes in the name of a state as an argument
+and lists all cities of that state, using the database hbtn_0e_4_usa
 """
 
 import MySQLdb
@@ -32,7 +33,7 @@ if __name__ == "__main__":
     first_city = True
     for row in rows:
         if not first_city:  # starting from the second city name
-            print(" ", end="")  # space before the name of the city
+            print(", ", end="")  # space before the name of the city
         print(row[0], end="")
         first_city = False
     print()

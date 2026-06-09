@@ -1,28 +1,34 @@
 #!/usr/bin/python3
 """
-List all State objects from the database.
+Lists all State objects from the database hbtn_0e_6_usa.
 """
 
-from sqlalchemy import create_engine
-from model_state import Base, State
 import sys
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from model_state import Base, State
 
 user = sys.argv[1]
 password = sys.argv[2]
 database = sys.argv[3]
 
-engine = create_engine("mysql+mysqldb://%s:%s@localhost:3306/%s",(user, password, database))
+engine = create_engine(
+    "mysql+mysqldb://{}:{}@localhost:3306/{}"
+    .format(user, password, database)
+)
 
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Reminder : the 'states' table is mapped to the State class.
-# Retrieve all State objects ordered by id.
+# The 'states' table is mapped to the State class.
+# Retrieve all states ordered by id.
 states = session.query(State).order_by(State.id).all()
 
-# Print each state with its id and name.
+# Display each state's id and name.
 for state in states:
     print("{}: {}".format(state.id, state.name))
 
-# Close the session when finished.
+# Close the session.
 session.close()
