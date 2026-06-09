@@ -52,7 +52,9 @@ At the end of this project, I am expected to be able to explain:
 
 ## Additional Resources
 
-* [SQLAlchemy Cheat Sheet](./SQLAlchemy_cheat_sheet.md) - Personal notes and common SQLAlchemy patterns used throughout the project.
+The `documentation/` directory contains various Markdown files used as references while working on this project. It includes notes, explanations, and cheat sheets related to MySQL, SQLAlchemy, and Object Relational Mapping.
+
+* [documentation/](./documentation/) - Collection of Markdown files useful for this project.
 
 ## Author
 
