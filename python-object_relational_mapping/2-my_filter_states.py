@@ -21,7 +21,8 @@ if __name__ == "__main__":
     cursor = connexion.cursor()
 
     # SQL query execution
-    cursor.execute("SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC"
+    cursor.execute("SELECT * FROM states "
+                   "WHERE BINARY name = '{}' ORDER BY id ASC"
                    .format(sys.argv[4]))
 
     # get the result
