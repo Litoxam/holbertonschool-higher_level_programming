@@ -8,27 +8,30 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 
-user = sys.argv[1]
-password = sys.argv[2]
-database = sys.argv[3]
 
-engine = create_engine(
-    "mysql+mysqldb://{}:{}@localhost:3306/{}"
-    .format(user, password, database)
-)
+if __name__ == "__main__":
 
-Session = sessionmaker(bind=engine)
-session = Session()
+    user = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
-# The 'states' table is mapped to the State class.
-# Retrieve the first state.
-state = session.query(State).first()
+    engine = create_engine(
+        "mysql+mysqldb://{}:{}@localhost:3306/{}"
+        .format(user, password, database)
+    )
 
-# Display the state's id and name.
-if state is None:
-    print("Nothing")
-else:
-    print("{}: {}".format(state.id, state.name))
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-# Close the session.
-session.close()
+    # The 'states' table is mapped to the State class.
+    # Retrieve the first state.
+    state = session.query(State).first()
+
+    # Display the state's id and name.
+    if state is None:
+        print("Nothing")
+    else:
+        print("{}: {}".format(state.id, state.name))
+
+    # Close the session.
+    session.close()
