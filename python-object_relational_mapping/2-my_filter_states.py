@@ -21,8 +21,8 @@ if __name__ == "__main__":
     cursor = connexion.cursor()
 
     # SQL query execution
-    cursor.execute("SELECT * FROM states where name = '{}' ORDER BY id ASC"
-                   .format(sys.argv[4]))
+    cursor.execute("SELECT * FROM states where name = %s ORDER BY id ASC",
+                   (sys.argv[4],))
 
     # get the result
     rows = cursor.fetchall()
