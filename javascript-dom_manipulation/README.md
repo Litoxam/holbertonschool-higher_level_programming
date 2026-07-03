@@ -12,6 +12,11 @@ Each script demonstrates a different way to interact with the DOM using JavaScri
 * [1-script.js](#1-scriptjs)
 * [2-script.js](#2-scriptjs)
 * [3-script.js](#3-scriptjs)
+* [4-script.js](#4-scriptjs)
+* [5-script.js](#5-scriptjs)
+* [6-script.js](#6-scriptjs)
+* [7-script.js](#7-scriptjs)
+* [8-script.js](#8-scriptjs)
 
 ---
 
@@ -266,12 +271,119 @@ Leia Organa
 This value is then displayed in the HTML page using `textContent`.
 
 
+# 7-script.js
+
+**File:** [`7-script.js`](./7-script.js)
+
+### Goal
+
+Retrieve the list of Star Wars movies from the SWAPI and display each movie title inside an unordered list.
+
+### New methods
+
+#### `for` loop
+
+Executes a block of code repeatedly while a condition is true.
+
+```javascript
+for (let i = 0; i < data.results.length; i++) {
+  // Code executed for each movie
+}
+```
+
+The loop iterates through every movie returned by the API.
+
+---
+
+#### Array indexing
+
+Accesses an element of an array using its index.
+
+```javascript
+data.results[i]
+```
+
+In this exercise, each object represents a movie.
+
+---
+
+#### Object properties
+
+Accesses a property of an object using dot notation.
+
+```javascript
+data.results[i].title
+```
+
+This returns the title of the current movie.
+
+---
+
+# 8-script.js
+
+**File:** [`8-script.js`](./8-script.js)
+
+### Goal
+
+Retrieve a translated "Hello" message from an API and display it after the HTML document has finished loading.
+
+### New methods
+
+#### `DOMContentLoaded`
+
+Fires when the HTML document has been completely loaded and parsed.
+
+```javascript
+document.addEventListener('DOMContentLoaded', function () {
+  // Code executed when the page is ready
+});
+```
+
+Using this event ensures that all HTML elements exist before JavaScript tries to access them.
+
+---
+
+#### API Query Parameters
+
+Some APIs accept parameters directly in the URL.
+
+```javascript
+https://hellosalut.stefanbohacek.com/?lang=fr
+```
+
+In this example, `lang=fr` tells the API to return the greeting in French.
+
+---
+
+#### Reusing `fetch()`
+
+This exercise also reinforces the use of:
+
+* `fetch()`
+* `response.json()`
+* `.then()`
+* `textContent`
+
+to retrieve data from an external API and display it in the page.
+
+
+
 # Concepts Learned
 
 Throughout this project, I learned how to:
 
-* Select HTML elements.
-* Modify CSS properties.
-* Listen for user events.
-* Manipulate CSS classes.
-* Create interactive web pages using the DOM.
+* Select HTML elements using `querySelector()` and `getElementById()`.
+* Modify an element's CSS properties.
+* Add, remove, replace, and check CSS classes.
+* Listen for user interactions with `addEventListener()`.
+* Create new HTML elements dynamically.
+* Insert new elements into the DOM with `appendChild()`.
+* Update the text content of HTML elements.
+* Retrieve data from external APIs using the Fetch API.
+* Work with asynchronous JavaScript using Promises and `.then()`.
+* Parse JSON responses with `response.json()`.
+* Iterate through arrays using a `for` loop.
+* Access object properties and array elements.
+* Execute JavaScript after the page has fully loaded with `DOMContentLoaded`.
+* Build interactive web pages by combining DOM manipulation and API requests.
+
