@@ -22,7 +22,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write("OK".encode())
+            self.wfile.write(json.dumps(data).encode())
 
         elif self.path == "/status":
             self.send_response(200)
