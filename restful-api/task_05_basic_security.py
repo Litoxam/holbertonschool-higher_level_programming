@@ -130,7 +130,7 @@ def get_admin_only():
         return jsonify({"error": "Admin access required"}), 403
 
     # Return a success message
-    return "message": "Admin Access: Granted", 200
+    return "Admin Access: Granted", 200
 
 
 if __name__ == "__main__":
