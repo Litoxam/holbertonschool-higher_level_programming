@@ -88,14 +88,34 @@ def get_jwt_protected():
     }), 200
 
 
+# Handle missing JWT tokens
 @jwt.unauthorized_loader
-def handle_unauthorized_loader(_):
+def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
 
 
+# Handle invalid or malformed JWT tokens
 @jwt.invalid_token_loader
-def handle_invalid_token_loader(_):
+def handle_invalid_token_error(err):
     return jsonify({"error": "Invalid token"}), 401
+
+
+# Handle expired JWT tokens
+@jwt.expired_token_loader
+def handle_expired_token_error(err):
+    return jsonify({"error": "Token has expired"}), 401
+
+
+# Handle revoked JWT tokens
+@jwt.revoked_token_loader
+def handle_revoked_token_error(err):
+    return jsonify({"error": "Token has been revoked"}), 401
+
+
+# Handle non-fresh JWT tokens
+@jwt.needs_fresh_token_loader
+def handle_needs_fresh_token_error(err):
+    return jsonify({"error": "Fresh token required"}), 401
 
 
 @app.route("/admin-only", methods=["GET"])
