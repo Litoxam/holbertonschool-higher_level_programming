@@ -83,9 +83,7 @@ def post_login():
 @jwt_required()
 def get_jwt_protected():
     # Return a success message
-    return jsonify({
-        "message": "JWT Auth: Access Granted"
-    }), 200
+    return "JWT Auth: Access Granted", 200
 
 
 # Handle missing JWT tokens
@@ -132,9 +130,7 @@ def get_admin_only():
         return jsonify({"error": "Admin access required"}), 403
 
     # Return a success message
-    return jsonify({
-        "message": "Admin Access: Granted"
-    })
+    return "message": "Admin Access: Granted", 200
 
 
 if __name__ == "__main__":
