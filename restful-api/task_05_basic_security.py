@@ -17,6 +17,7 @@ from flask_jwt_extended import (
 # GET /admin-only
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
 
 # Secret key used to generate and validate JWT signatures
 app.config["JWT_SECRET_KEY"] = "litoxamtoken"
@@ -33,8 +34,20 @@ users = {
     }
 }
 
+@auth.verify_password
+def verify_password(username, password):
+    # Find the user in memory
+    user = users.get(username)
+
+    # Check user and password
+    if user and check_password_hash(user["password"], password):
+        return username
+
+    return None
+
 
 @app.route("/basic-protected", methods=["GET"])
+@auth.login_required
 def get_basic():
     return "Basic Auth: Access Granted"
 
