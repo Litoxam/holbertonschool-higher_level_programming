@@ -24,13 +24,15 @@ app.config["JWT_SECRET_KEY"] = "litoxamtoken"
 jwt = JWTManager(app)
 
 users = {
-    "admin": {
-        "password": generate_password_hash("admin1234"),
-        "role": "admin"
-    },
-    "lito": {
-        "password": generate_password_hash("litopassword"),
+    "user1": {
+        "username": "user1",
+        "password": generate_password_hash("password"),
         "role": "user"
+    },
+    "admin1": {
+        "username": "admin1",
+        "password": generate_password_hash("password"),
+        "role": "admin"
     }
 }
 
@@ -83,7 +85,7 @@ def get_jwt_protected():
     # Return a success message
     return jsonify({
         "message": "JWT Auth: Access Granted"
-    })
+    }), 200
 
 
 @jwt.unauthorized_loader
