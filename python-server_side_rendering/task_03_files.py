@@ -26,7 +26,6 @@ def items():
     items = data.get('items', [])
 
     return render_template('items.html', items=items)
-
 @app.route('/products')
 def products():
     # example : /products?source=json&id=2
@@ -44,8 +43,7 @@ def products():
             products = list(csv.DictReader(f))
 
     else:
-        products = []
-
+        return render_template("product_display.html",  products=[],  error="Wrong source")
     if product_id:
         filtered_products = []
 
@@ -53,9 +51,12 @@ def products():
             if str(product["id"]) == product_id:
                 filtered_products.append(product)
 
+        if not filtered_products:
+            return render_template("product_display.html", products=[], error="Product not found")
+
         products = filtered_products
 
-    return render_template('product_display.html', products=products)
+    return render_template("product_display.html",products=products)
 
 
 if __name__ == '__main__':
